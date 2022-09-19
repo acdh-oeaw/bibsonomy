@@ -3,7 +3,7 @@ FROM tomcat:9-jdk8-openjdk-slim-bullseye
 COPY project.properties /home/bibsonomy/project.properties
 # install some packages
 RUN apt update && apt install -y git curl wget unzip links vim nano maven && \
-    git clone --branch v3.8.20 --single-branch https://bitbucket.org/bibsonomy/bibsonomy.git /app && \
+    git clone --branch stable --single-branch https://bitbucket.org/bibsonomy/bibsonomy.git /app && \
     cd /app && mvn clean install -Dmaven.test.skip -DskipTests && \
     cd /app && mvn war:inplace && \
 # allow slashes
